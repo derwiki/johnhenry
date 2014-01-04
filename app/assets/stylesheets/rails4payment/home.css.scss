@@ -17,8 +17,9 @@
 }
 #common-modules,
 #google-analytics {
-  ul li {
+  li {
     font-size: 26px;
+    margin-bottom: 15px;
   }
 }
 body > .container:nth-child(n+3) {

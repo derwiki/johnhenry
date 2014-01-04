@@ -1,4 +1,6 @@
-class Rails4payment::PaymentsController < ApplicationController
+require 'github/markup'
+
+class Rails4payment::PaymentsController < Rails4payment::ApplicationController
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
   before_filter :must_have_session, only: [:index, :show]
 
@@ -11,6 +13,9 @@ class Rails4payment::PaymentsController < ApplicationController
   # GET /payments/1
   # GET /payments/1.json
   def show
+    filename = File.join(File.dirname(File.expand_path(__FILE__)),
+                       '../../../README.md')
+    @readme = GitHub::Markup.render(filename, File.read(filename))
   end
 
   # GET /payments/new
@@ -34,7 +39,6 @@ class Rails4payment::PaymentsController < ApplicationController
                             password_confirmation: password
         sign_in(user)
       else
-        raise
         return redirect_to '/', alert: 'You need an account to do that.'
       end
     end
@@ -44,7 +48,6 @@ class Rails4payment::PaymentsController < ApplicationController
     rescue => exc
       Rails.logger.error(exc.message)
       Rails.logger.error(exc.inspect)
-      raise
       return redirect_to '/', alert: 'Payment could not be processed.'
     end
 

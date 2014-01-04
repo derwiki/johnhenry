@@ -2,6 +2,10 @@ class Rails4payment::RegistrationsController < Devise::RegistrationsController
   before_filter :maybe_generate_password, only: [:create]
   before_filter :noop_test_at_test_dot_com, only: [:create]
 
+  def new
+    render 'rails4payment/devise/registrations/new'
+  end
+
   private
 
     def maybe_generate_password

@@ -1,4 +1,4 @@
-class Rails4payment::HomeController < ApplicationController
+class Rails4payment::HomeController < Rails4payment::ApplicationController
   before_filter :set_home_meta_tags
 
   def welcome
@@ -10,8 +10,10 @@ class Rails4payment::HomeController < ApplicationController
       already built, accept payments with Stripe, Google Analytics integration
       and more!
     EOS
-    set_meta title: title, description: description,
-             og: { title: title, description: description }
+    if defined?(set_meta)
+      set_meta title: title, description: description,
+               og: { title: title, description: description }
+    end
   end
 
   private
@@ -19,8 +21,5 @@ class Rails4payment::HomeController < ApplicationController
     def set_home_meta_tags
       set_meta description: 'This will override the default description.',
                title: 'This title is overridden by set_meta in the controller action.'
-    end
-
-    def set_meta opts={}
     end
 end
