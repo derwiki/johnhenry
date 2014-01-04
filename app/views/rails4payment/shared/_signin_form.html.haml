@@ -1,0 +1,37 @@
+= form_for(User.new,
+           as: :user,
+           url: session_path(:user),
+           class: 'require-validation') do |f|
+  .form-row
+    .col-xs-12.form-group.required
+      %label.control-label Email Address
+      %input.form-control{ name: 'user[email]', size: '4', type: 'text', type: :email, placeholder: 'user@example.com', autofocus: !!local_assigns[:autofocus] }/
+
+  .form-row
+    .col-xs-12.form-group
+      %label.control-label Password
+      -# TODO password_field :password
+      %input.form-control{ size: '4', type: 'text', type: :password, name: 'user[password]' }/
+
+  - if defined?(devise_mappings) && devise_mapping.rememberable?
+    .form-row
+      .col-xs-12.form-group
+        = f.check_box :remember_me
+        = f.label :remember_me
+
+  .form-row
+    .col-xs-12.form-group
+      - if signed_in?
+        .btn.btn-primary.form-control.disabled
+          Already Signed In &raquo;
+      - else
+        %button.btn.btn-primary.form-control.submit-button{ type: 'submit' }
+          = image_tag 'spinner-primary.gif', class: 'hide'
+          Sign In &raquo;
+    - if defined?(resource_name)
+      .col-xs-12.form-group
+        = render 'devise/shared/links'
+  .form-row
+    .col-xs-12.error.form-group.hide
+      .alert-danger.alert
+        Please fix the errors and try again.

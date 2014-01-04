@@ -1,0 +1,41 @@
+= form_tag '/users', id: 'signup-form', method: 'POST', class: 'require-validation' do
+  .form-row
+    .col-xs-12.form-group.required
+      %label.control-label Email Address
+      %input.form-control{ name: 'user[email]', size: '4', type: 'text', type: :email, placeholder: 'user@example.com', autofocus: !!local_assigns[:autofocus] }/
+
+  - if local_assigns[:generate_password]
+    %input{ type: 'hidden', name: 'user[password]' }
+    %input{ type: 'hidden', name: 'user[password_confirmation]' }
+  - else
+    .form-row
+      .col-xs-12.form-group.required
+        %label.control-label Password
+        %input.form-control{ size: '4', type: 'text', type: :password, name: 'user[password]' }/
+    .form-row
+      .col-xs-12.form-group.required
+        %label.control-label Password Confirmation
+        %input.form-control{ size: '4', type: 'text', type: :password, name: 'user[password_confirmation]' }/
+
+  .form-row
+    .col-xs-12.form-group
+      - if signed_in?
+        .btn.btn-primary.form-control.disabled
+          Already Signed Up &raquo;
+      - else
+        %button.btn.btn-primary.form-control.submit-button{ type: 'submit' }
+          = image_tag 'spinner-primary.gif', class: 'hide'
+          = local_assigns[:cta] || raw("Sign Up &raquo;")
+    - if defined?(resource_name)
+      .col-xs-12.form-group
+        = render 'devise/shared/links'
+
+  .form-row
+    - if defined?(resource) && resource.present?
+      - if (devise_errors = devise_error_messages!).present?
+        .col-xs-12.error.form-group
+          .alert-danger.alert= devise_errors
+
+    .col-xs-12.error.form-group.hide
+      .alert-danger.alert
+        Please fix the errors and try again.

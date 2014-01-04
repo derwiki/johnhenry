@@ -1,0 +1,22 @@
+.container
+  .row
+    %h1.col-xs-12.text-center Payments
+
+    %table.col-xs-12
+      - if @payments.empty?
+        %i.col-xs-12.text-center — No payments —
+      - else
+        %tr
+          %th User
+          %th Stripe token
+          %th Stripe customer
+          %th
+          %th
+          %th
+
+        - @payments.each do |payment|
+          %tr
+            %td= payment.user_id
+            %td= payment.stripe_token
+            %td= payment.stripe_customer_id
+            %td= link_to 'Show', payment

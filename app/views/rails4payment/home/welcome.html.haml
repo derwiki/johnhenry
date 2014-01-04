@@ -1,0 +1,63 @@
+.container#hero-unit{ style: "background: url(#{ image_path('rails4payment/bay-bridge.jpg') }) no-repeat center bottom" }
+  .row
+    .col-xs-12
+      %h1.text-center
+        New to Ruby on Rails? Launch a site like this in 10 minutes
+    .well.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2.col-xs-10.col-xs-offset-1
+      %p
+        A blank canvas can be intimidating, even if learning Rails is something
+        you've wanted to do for years. With
+        %i Rails 4 Payment
+        you'll start with a web site like this one in under 10 minutes.
+      %p
+        Sign up to be notified when the Rails 4 Payment starter project is available:
+        .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2.col-xs-12
+          = render 'rails4payment/shared/signup_form',
+                    generate_password: true,
+                    autofocus: true,
+                    cta: raw('Get Started For Free &raquo;')
+
+.container#common-modules
+  .row
+    .col-md-6
+      %h2
+        Rails 4 Payment ships with several common forms ready to go
+      %ul
+        %li Payment
+        %li Payments Overview
+        %li Sign Up
+        %li Sign In
+        
+    .col-md-4.col-md-offset-1
+      %h4.text-center Example Signup
+      = render 'rails4payment/shared/signup_form'
+
+.container#common-modules
+  .row.well
+    .col-xs-12
+      %h2 Launch your Ruby on Rails site in just minutes. Start now!
+    .col-md-4.col-md-offset-1.col-sm-12
+      = render 'rails4payment/shared/payment_form', amount: 7
+    .col-md-6.col-md-offset-1
+
+.container
+  .row
+    .col-xs-12
+      %h2 Bootstrapped Essential Pages
+      %h4
+        Rails 4 Payment includes basic user management pages
+  .row
+    %a{ href: new_user_session_path }
+      = image_tag 'rails4payment/sign-in-screenshot.jpg', class: 'col-sm-6 col-xs-12'
+    %a{ href: new_user_registration_path }
+      = image_tag 'rails4payment/sign-up-screenshot.jpg', class: 'col-sm-6 col-xs-12 '
+
+.container#google-analytics
+  .row
+    = image_tag 'rails4payment/ga-screenshot.jpg', class: 'col-sm-6 col-xs-12'
+    .col-sm-6.col-xs-12
+      %h2 Google Analytics
+      %ul
+        %li Monitor traffic
+        %li Link to AdWords
+        %li Set up conversion goals

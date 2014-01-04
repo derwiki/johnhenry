@@ -1,0 +1,26 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#hero-unit {
+  width: 100%;
+  min-height: 600px;
+  h1 {
+    color: #eee;
+  }
+  .well {
+    font-size: 18px;
+  }
+  label,
+  .alert {
+    font-size: 14px;
+  }
+}
+#common-modules,
+#google-analytics {
+  ul li {
+    font-size: 26px;
+  }
+}
+body > .container:nth-child(n+3) {
+  margin-bottom: 80px;
+}

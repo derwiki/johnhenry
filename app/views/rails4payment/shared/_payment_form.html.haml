@@ -1,0 +1,66 @@
+%script{ src: 'https://js.stripe.com/v2/', type: 'text/javascript' }
+= form_tag '/payments', id: 'payment-form', method: 'POST',
+    data: { 'stripe-publishable-key' => ENV['STRIPE_PUBLISHABLE_KEY'],
+            'cc-on-file' => false }, class: 'require-validation'  do
+  - if false
+    .form-row
+      We have your credit card information on file.
+  - else
+    .form-row
+      .col-xs-12.form-group.required
+        %label.control-label Email Address
+        - if signed_in?
+          %input.form-control{ size: '4', type: 'email',
+                               value: current_user.email,
+                               disabled: true }/
+        - elsif Rails.env.development?
+          - nonce = nil # Devise.friendly_token.first(10)
+          %input.form-control{ name: 'email', size: '4', type: 'email', value: "user+#{ nonce }@example.com" }/
+        - else
+          %input.form-control{ name: 'email', size: '4', type: 'email' }/
+
+    .form-row
+      .col-xs-12.form-group.card.required
+        %label.control-label Card Number
+        -# TODO stub in default values better for dev
+        - if Rails.env.development?
+          %input.form-control.card-number{ autocomplete: 'off', size: '20', type: 'text', value: '4242424242424242' }/
+        - else
+          %input.form-control.card-number{ autocomplete: 'off', size: '20', type: 'text' }/
+
+    .form-row
+      .col-xs-4.form-group.cvc.required
+        %label.control-label CVC
+        - if Rails.env.development?
+          %input.form-control.card-cvc{ autocomplete: 'off', size: '4', type: 'text', placeholder: 'ex. 311', value: '175' }/
+        - else
+          %input.form-control.card-cvc{ autocomplete: 'off', size: '4', type: 'text', placeholder: 'ex. 311' }/
+      .col-xs-4.form-group.expiration.required
+        %label.control-label Expiration
+        - if Rails.env.development?
+          %input.form-control.card-expiry-month{ size: '2', type: 'text', placeholder: 'MM', value: '04' }/
+        - else
+          %input.form-control.card-expiry-month{ size: '2', type: 'text', placeholder: 'MM' }/
+      .col-xs-4.form-group.expiration.required
+        %label.control-label &nbsp;
+        - if Rails.env.development?
+          %input.form-control.card-expiry-year{ size: '4', type: 'text', placeholder: 'YYYY', value: '2014' }/
+        - else
+          %input.form-control.card-expiry-year{ size: '4', type: 'text', placeholder: 'YYYY' }/
+
+    .form-row
+      .col-md-12
+        .form-control.total.btn.btn-info
+          Total:
+          %span.amount= (local_assigns[:amount] || '50')
+
+    .form-row
+      .col-md-12.form-group
+        %button.form-control.btn.btn-primary.submit-button{ type: 'submit' }
+          = image_tag 'spinner-primary.gif', class: 'hide'
+          Pay &raquo;
+
+    .form-row
+      .col-md-12.error.form-group.hide
+        .alert-danger.alert
+          Please fix the errors and try again.

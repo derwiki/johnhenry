@@ -1,0 +1,19 @@
+.container
+  .row
+    .col-xs-12 &nbsp;
+  .row
+    .col-xs-12
+      %p
+        %b User:
+        = @payment.user.email
+    .col-xs-12
+      %p
+        %b Amount:
+        = @payment.amount
+    .col-xs-12
+      %p
+        %b Date:
+        = @payment.created_at
+    .col-xs-12
+      %p
+        %b Download Link:
