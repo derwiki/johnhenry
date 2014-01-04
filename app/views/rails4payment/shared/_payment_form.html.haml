@@ -57,8 +57,8 @@
     .form-row
       .col-md-12.form-group
         %button.form-control.btn.btn-primary.submit-button{ type: 'submit' }
-          = image_tag 'spinner-primary.gif', class: 'hide'
-          Pay &raquo;
+          = image_tag 'rails4payment/spinner-primary.gif', class: 'hide'
+          = local_assigns[:cta] || raw('Pay &raquo;')
 
     .form-row
       .col-md-12.error.form-group.hide

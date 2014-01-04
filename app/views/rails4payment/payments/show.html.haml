@@ -14,6 +14,6 @@
       %p
         %b Date:
         = @payment.created_at
-    .col-xs-12
-      %p
-        %b Download Link:
+.container
+  .row
+    .col-xs-12= raw(@readme)

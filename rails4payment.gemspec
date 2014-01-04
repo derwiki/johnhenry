@@ -23,6 +23,8 @@ Gem::Specification.new do |s|
   s.add_dependency "jquery-rails"
   s.add_dependency "devise"
   s.add_dependency "stripe"
+  s.add_dependency "github-markup"
+  s.add_dependency "github-markdown"
 
   s.add_development_dependency "sqlite3"
 end
