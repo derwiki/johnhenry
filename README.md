@@ -65,6 +65,7 @@ resources :payments, controller: 'rails4payment/payments'
 %html
   %head
     = csrf_meta_tag
+    = meta_tags
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   %body
