@@ -22,122 +22,19 @@ Rails 4.0.2
 1. Create a new Rails project:
    `rails new SampleProject && cd SampleProject`
 
-1. Add to your `Gemfile`:
-```ruby
-gem 'rails4payment', '1.0.0',
-    git: 'https://rails4payment:7eA9hsLSBw8Q@bitbucket.org/rails4payment/rails4payment.git'
-gem 'haml-rails'
-gem 'devise'
-gem 'bootstrap-sass', '~> 3.0.3.0'
-gem 'stripe'
-gem 'meta-tags-helpers', '~> 0.2.0'
-#
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
-end
-#
-group :development, :test do
-  gem 'sqlite3'
-end
+1. Download and apply installation patch:
+```bash
+curl https://gist.github.com/derwiki/85e4f831cb893d7e06f1/raw/b981a7f5622e211bd2e3cdf6931941655eba8ac2/install-rails4payment.patch > install-rails4payment.patch
+# view stats of the patch about to be applied
+git apply --stat install-rails4payment.patch
+# git 'apply mailbox' downloaded patch into local commit
+git am install-rails4payment.patch
 ```
-
 1. Run bundle to update Gemfile.lock and then create database:
 ```bash
 bundle
 bundle exec rake rails4payment:install:migrations
 bundle exec rake db:migrate
-```
-
-1. Add to `config/routes.rb`
-```ruby
-root 'rails4payment/home#welcome'
-devise_for :users, controllers: {
-  registrations: 'rails4payment/registrations',
-  sessions: 'rails4payment/sessions'
-}
-resources :payments, controller: 'rails4payment/payments'
-```
-
-1. Create `app/views/layouts/application.html.haml`:
-```haml
-!!!
-%html
-  %head
-    = csrf_meta_tag
-    = meta_tags
-    = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
-  %body
-    %nav.navbar.navbar-default{role: "navigation"}
-      / Brand and toggle get grouped for better mobile display
-      .navbar-header
-        %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
-          %span.sr-only Toggle navigation
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-        %a.navbar-brand{href: '/'} Rails 4 Payment
-      / Collect the nav links, forms, and other content for toggling
-      #bs-example-navbar-collapse-1.collapse.navbar-collapse
-        %ul.nav.navbar-nav
-          - if !signed_in?
-            %li.active
-              = link_to 'Sign Up', new_user_registration_path
-            %li
-              = link_to 'Sign In', new_user_session_path
-        %form.navbar-form.navbar-left{role: "search"}
-          .form-group
-            %input.form-control{placeholder: "Search", type: "text"}/
-          %button.btn.btn-default{type: "submit"} Search
-        - if signed_in?
-          %ul.nav.navbar-nav.navbar-right
-            %li.dropdown
-              %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-                Account
-                %b.caret
-              %ul.dropdown-menu
-                %li
-                  %a{ href: payments_path } Payments
-                %li.divider
-                %li
-                  = link_to 'Sign Out', destroy_user_session_path, method: :delete
-
-    - if notice.present? || alert.present?
-      .container{ style: 'width: 100%' }
-        .row
-          - if notice.present?
-            .col-md-12.alert.alert-success
-              = notice
-              %a.pull-right.dismiss-flash{ href: '#' } ✕
-          - if alert.present?
-            .col-md-12.alert.alert-warning
-              = alert
-              %a.pull-right.dismiss-flash{ href: '#' } ✕
-    = yield
-
-    - if Rails.env.production?
-      :javascript
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', '#{ ENV['GOOGLE_ANALYTICS_UA'] }', '#{ ENV['GOOGLE_ANALYTICS_DOMAIN'] }');
-        ga('send', 'pageview');
-```
-
-1. Remove the `erb` template: `rm app/views/layouts/application.html.erb`
-   (Sorry about 5 and 6, they're definitely the worst kludges)
-
-1. Add to `app/assets/stylesheets/application.css`:
-```scss
-*= require rails4payment/application
-```
-
-1. Add to `app/assets/javascript/application.js`:
-```javascript
-//= require rails4payment/application
 ```
 
 1. Try the server locally:
