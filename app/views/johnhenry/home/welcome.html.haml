@@ -1,4 +1,4 @@
-.container#hero-unit{ style: "background: url(#{ image_path('johnhenry/bay-bridge.jpg') }) no-repeat center bottom" }
+.container#hero-unit{ style: "background: url(#{ image_path('johnhenry/home/welcome/tree-bark.png') })" }
   .row
     .col-xs-12
       %h1.text-center
@@ -19,14 +19,11 @@
 
 .container#bootstrap
   .row
-    .col-xs-12
+    .col-sm-6.col-xs-12
       %h2 Leverage Twitter's Bootstrap 3.0
-        
-  .row
+      %p Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.
     .col-sm-6.col-xs-12.text-center
       = image_tag "johnhenry/home/welcome/logo-bootstrap-html-css.jpg"
-    .col-sm-6.col-xs-12
-      %p Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.
 
 .container#stripe
   .row
@@ -74,13 +71,15 @@
 
 .container#google-analytics
   .row
-    = image_tag 'johnhenry/home/welcome/ga-screenshot.jpg', class: 'col-sm-6 col-xs-12'
-    .col-sm-6.col-xs-12
+    .col-xs-12
       %h2 Google Analytics
+  .row
+    .col-sm-6.col-xs-12
       %ul
         %li Monitor traffic
         %li Link to AdWords
         %li Set up conversion goals
+    = image_tag 'johnhenry/home/welcome/ga-screenshot.jpg', class: 'col-sm-6 col-xs-12'
 
 .container#heroku
   .row
@@ -88,11 +87,6 @@
       %h2 Use Heroku and stop worrying about web hosting
 
   .row
-    .col-sm-5.col-xs-12.text-center
-      %br
-      %br
-      %br
-      = image_tag "johnhenry/home/welcome/logo-heroku.jpg"
     .col-sm-7.col-xs-12
       %p
         Deliver apps, the right way.
@@ -101,6 +95,11 @@
         %li Free tier sufficient for small web sites
         %li Makes running a Rails App "foolproof"
         %li Commonly used among Rails developers
+    .col-sm-5.col-xs-12.text-center
+      %br
+      %br
+      %br
+      = image_tag "johnhenry/home/welcome/logo-heroku.jpg"
 
 .container#common-modules
   .row
@@ -117,4 +116,4 @@
     .col-md-4.col-md-offset-1
       %h4.text-center Example Signup Form
       %h5.text-center Just one of many included forms
-      = render 'johnhenry/shared/signup_form'
+      = render 'johnhenry/shared/signup_form', cta: raw('Example Button &raquo;')
