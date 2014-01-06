@@ -52,7 +52,15 @@
       .col-md-12
         .form-control.total.btn.btn-info
           Total:
-          %span.amount= (local_assigns[:amount] || '50')
+          %span.amount= number_to_currency(local_assigns[:amount].try(:to_f) || 50)
+
+    - %w(STRIPE_PUBLISHABLE_KEY STRIPE_SECRET_KEY).each do |env_var|
+      - if ENV[env_var].blank?
+        .form-row
+          .col-md-12
+            .form-control.total.btn.btn-warning{ style: 'margin-top: 10px; height: auto; white-space: normal' }
+              Environment variable `#{ env_var }` must be set for this
+              form to work.
 
     .form-row
       .col-md-12.form-group
