@@ -38,7 +38,7 @@ git commit Gemfile.lock -m "Generated Gemfile.lock from bundle install"
 
 1. Install database migrations and run them
 ```bash
-bundle exec rake johnhenry:install:migrations
+bundle exec rake john_henry:install:migrations
 bundle exec rake db:migrate
 git add db && git commit -m "Add initial migrations and schema.rb"
 ```
