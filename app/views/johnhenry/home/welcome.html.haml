@@ -23,7 +23,7 @@
       %h2 Leverage Twitter's Bootstrap 3.0
         
   .row
-    .col-sm-6.col-xs-12
+    .col-sm-6.col-xs-12.text-center
       = image_tag "johnhenry/home/welcome/logo-bootstrap-html-css.jpg"
     .col-sm-6.col-xs-12
       %p Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.
@@ -40,8 +40,8 @@
         %li 2.9% + $.30 per transaction
         %li Stripe stores card number and gives you a secure token
         %li Quick and easy to switch between test and live mode
+        %li Used by major Internet companies
     .col-sm-4.col-sm-offset-1.col-xs-12
-      %h4.text-center Used by these companies
       = image_tag "johnhenry/home/welcome/logo-stripe-users.jpg"
 
 
@@ -57,7 +57,7 @@
         have your first version live on the internet in just three easy steps:
       %ol
         %li Download `johnhenry` gem
-        %li Follow the #{ link_to 'install script', '#' }
+        %li Follow the installation guide
         %li Deploy to Heroku
 
 .container
@@ -68,13 +68,13 @@
         Rails 4 Payment includes basic user management pages
   .row
     %a{ href: new_user_session_path }
-      = image_tag 'johnhenry/sign-in-screenshot.jpg', class: 'col-sm-6 col-xs-12'
+      = image_tag 'johnhenry/home/welcome/sign-in-screenshot.jpg', class: 'col-sm-6 col-xs-12'
     %a{ href: new_user_registration_path }
-      = image_tag 'johnhenry/sign-up-screenshot.jpg', class: 'col-sm-6 col-xs-12 '
+      = image_tag 'johnhenry/home/welcome/sign-up-screenshot.jpg', class: 'col-sm-6 col-xs-12 '
 
 .container#google-analytics
   .row
-    = image_tag 'johnhenry/ga-screenshot.jpg', class: 'col-sm-6 col-xs-12'
+    = image_tag 'johnhenry/home/welcome/ga-screenshot.jpg', class: 'col-sm-6 col-xs-12'
     .col-sm-6.col-xs-12
       %h2 Google Analytics
       %ul
