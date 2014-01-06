@@ -1,5 +1,5 @@
-class JohnHenry::SessionsController < Devise::SessionsController
+class Johnhenry::SessionsController < Devise::SessionsController
   def new
-    render 'rails4payment/devise/sessions/new'
+    render 'johnhenry/devise/sessions/new'
   end
 end

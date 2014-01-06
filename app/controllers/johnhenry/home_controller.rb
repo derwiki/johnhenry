@@ -1,4 +1,4 @@
-class JohnHenry::HomeController < JohnHenry::ApplicationController
+class Johnhenry::HomeController < Johnhenry::ApplicationController
   before_filter :set_home_meta_tags
 
   def welcome

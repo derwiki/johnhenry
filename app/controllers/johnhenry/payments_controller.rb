@@ -1,6 +1,6 @@
 require 'github/markup'
 
-class JohnHenry::PaymentsController < JohnHenry::ApplicationController
+class Johnhenry::PaymentsController < Johnhenry::ApplicationController
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
   before_filter :must_have_session, only: [:index, :show]
 

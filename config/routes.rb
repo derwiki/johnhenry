@@ -3,10 +3,10 @@ JohnHenry::Engine.routes.draw do
   resources :payments
 
   devise_for :users, controllers: {
-    unlocks: 'rails4payment/unlocks',
-    sessions: 'rails4payment/sessions',
-    passwords: 'rails4payment/passwords',
-    confirmations: 'rails4payment/confirmations',
-    registrations: 'rails4payment/registrations',
+    unlocks: 'johnhenry/unlocks',
+    sessions: 'johnhenry/sessions',
+    passwords: 'johnhenry/passwords',
+    confirmations: 'johnhenry/confirmations',
+    registrations: 'johnhenry/registrations',
   }
 end

@@ -1,4 +1,4 @@
 # desc "Explaining what the task does"
-# task :rails4payment do
+# task :johnhenry do
 #   # Task goes here
 # end

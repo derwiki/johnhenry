@@ -1,4 +1,4 @@
-module JohnHenry
+module Johnhenry
   module ApplicationHelper
   end
 end

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails4payment (1.0.0)
+    johnhenry (1.0.0)
       rails (~> 4.0.2)
 
 GEM
@@ -84,5 +84,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  rails4payment!
+  johnhenry!
   sqlite3

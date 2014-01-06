@@ -14,7 +14,7 @@ can verify both with:
 ```bash
 $ ruby -v
 ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.3.0]
-Adams-MacBook-Pro:~/src/rails4payment[master *+%]
+Adams-MacBook-Pro:~/src/johnhenry[master *+%]
 $ rails -v
 Rails 4.0.2
 ```
@@ -24,11 +24,11 @@ Rails 4.0.2
 
 1. Download and apply installation patch:
 ```bash
-curl https://gist.github.com/derwiki/85e4f831cb893d7e06f1/raw/dbf5b1adbe8b88d6ecff2c028c13bdb035ef3095/install-rails4payment.patch > install-rails4payment.patch
+curl https://gist.github.com/derwiki/85e4f831cb893d7e06f1/raw/dbf5b1adbe8b88d6ecff2c028c13bdb035ef3095/install-johnhenry.patch > install-johnhenry.patch
 # view stats of the patch about to be applied
-git apply --stat install-rails4payment.patch
+git apply --stat install-johnhenry.patch
 # git 'apply mailbox' downloaded patch into local commit
-git am install-rails4payment.patch
+git am install-johnhenry.patch
 ```
 1. Run bundle to update Gemfile.lock and then create database:
 ```bash
@@ -38,7 +38,7 @@ git commit Gemfile.lock -m "Generated Gemfile.lock from bundle install"
 
 1. Install database migrations and run them
 ```bash
-bundle exec rake rails4payment:install:migrations
+bundle exec rake johnhenry:install:migrations
 bundle exec rake db:migrate
 git add db && git commit -m "Add initial migrations and schema.rb"
 ```
@@ -73,4 +73,8 @@ STRIPE_SECRET_KEY=lbVrAG8WhPb2cHG9ryBBi1psT4ZREpm8
 heroku addons:add sendgrid:starter
 ```
 
+1. Add pgbackups
+```bash
+h addons:add pgbackups pcr
+```
 Congratulations! Please email feedback to `derewecki@gmail.com`.
