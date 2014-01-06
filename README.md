@@ -24,7 +24,7 @@ Rails 4.0.2
 
 1. Download and apply installation patch:
 ```bash
-curl https://gist.github.com/derwiki/85e4f831cb893d7e06f1/raw/772ceb6f15900a3b1bfca81d40c285528680c897/install-john-henry-rails.patch > install-johnhenry.patch
+curl https://gist.github.com/derwiki/85e4f831cb893d7e06f1/raw/52388f3823a53773ee07c00e61e4c0031a4e7b75/install-john-henry-rails.patch > install-johnhenry.patch
 # view stats of the patch about to be applied
 git apply --stat install-johnhenry.patch
 # git 'apply mailbox' downloaded patch into local commit
