@@ -1,4 +1,4 @@
-class Rails4payment::RegistrationsController < Devise::RegistrationsController
+class JohnHenry::RegistrationsController < Devise::RegistrationsController
   before_filter :maybe_generate_password, only: [:create]
   before_filter :noop_test_at_test_dot_com, only: [:create]
 

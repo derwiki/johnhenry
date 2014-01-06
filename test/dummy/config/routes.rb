@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
 
-  mount Rails4payment::Engine => "/rails4payment"
+  mount JohnHenry::Engine => "/johnhenry"
 end

@@ -1,4 +1,4 @@
-Rails4payment::Engine.routes.draw do
+JohnHenry::Engine.routes.draw do
   root 'home#welcome'
   resources :payments
 

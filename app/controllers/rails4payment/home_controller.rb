@@ -1,4 +1,4 @@
-class Rails4payment::HomeController < Rails4payment::ApplicationController
+class JohnHenry::HomeController < JohnHenry::ApplicationController
   before_filter :set_home_meta_tags
 
   def welcome

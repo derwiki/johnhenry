@@ -1,5 +1,5 @@
-module Rails4payment
+module JohnHenry
   class Engine < ::Rails::Engine
-    isolate_namespace Rails4payment
+    isolate_namespace JohnHenry
   end
 end

@@ -1,5 +1,5 @@
 # Introduction
-Thanks for downloading Rails4payment, the fastest way to launch a new Ruby on
+Thanks for downloading JohnHenry, the fastest way to launch a new Ruby on
 Rails web application on Heroku with Bootstrap.
 
 # Installation on Mac OS X (and probably Linux)

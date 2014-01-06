@@ -1,15 +1,15 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require "rails4payment/version"
+require "johnhenry/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "rails4payment"
-  s.version     = Rails4payment::VERSION
+  s.name        = "johnhenry"
+  s.version     = JohnHenry::VERSION
   s.authors     = ["Adam Derewecki"]
   s.email       = ["derewecki@gmail.com"]
-  s.homepage    = "http://rails4payment.herokuapp.com"
+  s.homepage    = "http://johnhenryrails.herokuapp.com"
   s.summary     = "Starter Rails 4 app with Bootstrap and Stripe"
   s.description = "Starter Rails 4 app with Bootstrap and Stripe"
 

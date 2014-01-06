@@ -1,4 +1,4 @@
-class Rails4payment::ApplicationController < ActionController::Base
+class JohnHenry::ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   before_filter :set_meta_tag_defaults

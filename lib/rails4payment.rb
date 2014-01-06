@@ -1,4 +1,4 @@
-require "rails4payment/engine"
+require "johnhenry/engine"
 
-module Rails4payment
+module JohnHenry
 end

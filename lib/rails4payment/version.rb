@@ -1,3 +1,3 @@
-module Rails4payment
+module JohnHenry
   VERSION = "1.0.0"
 end

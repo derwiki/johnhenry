@@ -1,7 +1,7 @@
 require 'test_helper'
 
-class Rails4paymentTest < ActiveSupport::TestCase
+class JohnHenryTest < ActiveSupport::TestCase
   test "truth" do
-    assert_kind_of Module, Rails4payment
+    assert_kind_of Module, JohnHenry
   end
 end

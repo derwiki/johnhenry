@@ -1,4 +1,4 @@
-module Rails4payment
+module JohnHenry
   module ApplicationHelper
   end
 end
