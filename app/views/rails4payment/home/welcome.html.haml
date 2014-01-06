@@ -17,22 +17,33 @@
                   autofocus: true,
                   cta: raw('Get Started For Free &raquo;')
 
-.container#common-modules
+.container#bootstrap
   .row
-    .col-md-6
-      %h2
-        Start with an existing project
-      %br
-      %ul
-        %li Learn by modifying
-        %li Use included components
-        %li Avoid common mistakes
-        %li Save time
+    .col-xs-12
+      %h2 Leverage Twitter's Bootstrap 3.0
         
-    .col-md-4.col-md-offset-1
-      %h4.text-center Example Signup Form
-      %h5.text-center Just one of many included forms
-      = render 'rails4payment/shared/signup_form'
+  .row
+    .col-sm-6.col-xs-12
+      = image_tag "rails4payment/home/welcome/logo-bootstrap-html-css.png"
+    .col-sm-6.col-xs-12
+      %p Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.
+
+.container#stripe
+  .row
+    .col-xs-12
+      %h2 Start taking payments immediately with Stripe
+
+  .row
+    .col-sm-7.col-xs-12
+      %p Stripe makes it easy to start accepting credit cards on the web today
+      %ul
+        %li 2.9% + $.30 per transaction
+        %li Stripe stores card number and gives you a secure token
+        %li Quick and easy to switch between test and live mode
+    .col-sm-4.col-sm-offset-1.col-xs-12
+      %h4.text-center Used by these companies
+      = image_tag "rails4payment/home/welcome/logo-stripe-users.jpg"
+
 
 .container#common-modules
   .row.well
@@ -71,13 +82,39 @@
         %li Link to AdWords
         %li Set up conversion goals
 
-.container#bootstrap
+.container#heroku
   .row
     .col-xs-12
-      %h2 Leverage Twitter's Bootstrap 3.0
+      %h2 Use Heroku and stop worrying about web hosting
 
   .row
-    .col-sm-6.col-xs-12
-      = image_tag "rails4payment/home/welcome/logo-bootstrap-html-css.png"
-    .col-sm-6.col-xs-12
-      %p Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.
+    .col-sm-5.col-xs-12.text-center
+      %br
+      %br
+      %br
+      = image_tag "rails4payment/home/welcome/logo-heroku.png"
+    .col-sm-7.col-xs-12
+      %p
+        Deliver apps, the right way.
+        Cloud computing designed and built for developers.
+      %ul
+        %li Free tier sufficient for small web sites
+        %li Makes running a Rails App "foolproof"
+        %li Commonly used among Rails developers
+
+.container#common-modules
+  .row
+    .col-md-6
+      %h2
+        Start with an existing project
+      %br
+      %ul
+        %li Learn by modifying
+        %li Use included components
+        %li Avoid common mistakes
+        %li Save time
+
+    .col-md-4.col-md-offset-1
+      %h4.text-center Example Signup Form
+      %h5.text-center Just one of many included forms
+      = render 'rails4payment/shared/signup_form'
