@@ -11,11 +11,18 @@
     .form-row
       .col-xs-12.form-group.required
         %label.control-label Password
-        %input.form-control{ size: '4', type: 'text', type: :password, name: 'user[password]' }/
+        %input.form-control{ size: '4', type: :password, name: 'user[password]' }/
     .form-row
       .col-xs-12.form-group.required
         %label.control-label Password Confirmation
-        %input.form-control{ size: '4', type: 'text', type: :password, name: 'user[password_confirmation]' }/
+        %input.form-control{ size: '4', type: :password, name: 'user[password_confirmation]' }/
+  - if local_assigns[:extra_inputs].present?
+    - local_assigns[:extra_inputs].each do |input|
+      .form-row
+        .col-xs-12.form-group{ class: input[:required] ? 'required' : '' }
+          - if input[:label].present?
+            %label.control-label= input[:label]
+          %input.form-control{ size: '4', type: input[:type], name: input[:name], value: input[:value] }/
 
   .form-row
     .col-xs-12.form-group
