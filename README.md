@@ -14,7 +14,9 @@ step 2 after `rails new MyProject`. Save 1-2 weeks of boilerplate development
 setting up Bootstrap, Devise, Stripe, etc and concentrate on building the
 product you want to build!
 
-# Demo
+# Screenshots and Demo
+[![Screenshot](https://raw.github.com/derwiki/johnhenry/master/screenshot-johnhenry.jpg)](http://www.johnhenryrails.com)
+
 A brand new Rails 4 project with *just* JohnHenry is live at:
 [http://www.johnhenryrails.com](http://www.johnhenryrails.com)
 This is exactly what you will end up with after installing.
