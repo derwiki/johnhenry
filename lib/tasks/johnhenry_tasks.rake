@@ -116,7 +116,7 @@ resources :payments, controller: 'johnhenry/payments'
 
       Installation complete! If you're using git, you should:
 
-        git add app/assets/javascripts/application.js app/assets/stylesheets/application.css app/views/layouts/application.html.haml config/initializers/stripe.rb
+        git add app config Gemfile*
         git rm app/views/layouts/application.html.erb
 
       You can check out the demo page:
