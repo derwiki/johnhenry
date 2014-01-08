@@ -16,3 +16,6 @@
 nav.navbar {
   margin-bottom: 0;
 }
+.stretch {
+  width: 100%;
+}
