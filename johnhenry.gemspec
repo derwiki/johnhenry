@@ -9,14 +9,15 @@ Gem::Specification.new do |s|
   s.version     = JohnHenry::VERSION
   s.authors     = ["Adam Derewecki"]
   s.email       = ["derewecki@gmail.com"]
-  s.homepage    = "http://johnhenryrails.herokuapp.com"
+  s.homepage    = "http://github.com/derwiki/johnhenry"
   s.summary     = "Launch a new Bootstrap/Rails 4 app on Heroku in minutes."
   s.description = "
     Launch a landing page on Heroku in less than 10 minutes with JohnHenry. This
     gem sets up bootstrap and provides Bootstrapped user management pages with
     Devise. JohnHenry also includes a payment form that works with Stripe and is
     ready to go immediately.".gsub(/\n/, ' ')
-  s.license = 'MIT License'
+  s.licenses    = ['MIT']
+  s.post_install_message = "Thanks for installing the JohnHenry gem. To install to the current project, please run `bundle exec rake johnhenry:install`"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
