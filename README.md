@@ -1,6 +1,7 @@
 # Introduction
 Thanks for downloading JohnHenry, the fastest way to launch a new Ruby on
-Rails web application on Heroku with Bootstrap.
+Rails web application on Heroku with Bootstrap. We'll have you up and running
+in minutes!
 
 # Installation on Mac OS X (and probably Linux)
 All commands are run via Terminal, which you can find in your
@@ -22,25 +23,26 @@ Rails 4.0.2
 1. Create a new Rails project:
    `rails new SampleProject && cd SampleProject`
 
-1. Download and apply installation patch:
-```bash
-curl https://gist.github.com/derwiki/85e4f831cb893d7e06f1/raw/52388f3823a53773ee07c00e61e4c0031a4e7b75/install-john-henry-rails.patch > install-johnhenry.patch
-# view stats of the patch about to be applied
-git apply --stat install-johnhenry.patch
-# git 'apply mailbox' downloaded patch into local commit
-git am install-johnhenry.patch
-```
-1. Run bundle to update Gemfile.lock and then create database:
-```bash
-bundle
-git commit Gemfile.lock -m "Generated Gemfile.lock from bundle install"
-```
+1. Edit `Gemfile` and just below `rails` add:
+   `gem 'johnhenry', git: 'https://johnhenryrails:A9S26gdLZz@bitbucket.org/johnhenryrails/johnhenry.git'`
+
+1. Run `bundle` to update `Gemfile.lock`
+
+1. Run JohnHenryRails installation script: `bundle exec rake johnhenry:install`
+
+1. Commit the generated changes:
+
+   ```bash
+   git add app config Gemfile*
+   git rm app/views/layouts/application.html.erb
+   git commit -m 'Install JohnHenryRails'
+   ```
 
 1. Install database migrations and run them
 ```bash
 bundle exec rake john_henry:install:migrations
 bundle exec rake db:migrate
-git add db && git commit -m "Add initial migrations and schema.rb"
+git add db && git commit -m 'Add initial migrations and schema.rb'
 ```
 
 1. Try the server locally:
@@ -73,8 +75,28 @@ STRIPE_SECRET_KEY=lbVrAG8WhPb2cHG9ryBBi1psT4ZREpm8
 heroku addons:add sendgrid:starter
 ```
 
-1. Add pgbackups
+1. Add pgbackups and take your first database backup:
 ```bash
-h addons:add pgbackups pcr
+heroku addons:add pgbackups
+heroku pgbackups:capture
 ```
+You can additionally schedule daily backups with Heroku's Scheduler:
+```bash
+heroku addons:add scheduler
+heroku addons:open scheduler
+```
+
+1. Set up a monitoring service. UptimeRobot.com gives you 50 free monitors.
+   On Heroku, this has the added benefit of keeping your site active, so that
+   your dyno never hibernates and you never get a slow request because the dyno
+   was waking back up.
+
+1. Set up a staging instance
+
+1. (optional) Add a custom domain
+`heroku domains:add www.johnhenryrails.com`
+In your Registrar's host record configuration, you must add
+`sampleproject.herokuapp.com.` as a CNAME for your domain.
+
+
 Congratulations! Please email feedback to `derewecki@gmail.com`.
