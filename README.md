@@ -1,12 +1,33 @@
 # Introduction
-Thanks for downloading JohnHenry, the fastest way to launch a new Ruby on
-Rails web application on Heroku with Bootstrap. We'll have you up and running
-in minutes!
+The JohnHenry Rails toolkit is meant to take care of all the menial tasks of
+launching a Rails application, that are largely the same from application to
+application. Using JohnHenry, you'll have the sample project live on a Heroku
+subdomain of your choosing (e.g. `johnhenryrails.herokuapp.com`) in under ten
+minutes, even if you don't know anything about Ruby on Rails!
 
-# Installation on Mac OS X (and probably Linux)
+Once you've launched your application, you can easily customize it to be a
+landing page to collect emails for a new product. And when you've got a feature
+you want users to pay for, JohnHenry's payment form is ready for you to use.
+
+If you're already a Ruby on Rails expert, JohnHenry still provides value. It's
+step 2 after `rails new MyProject`. Save 1-2 weeks of boilerplate development
+setting up Bootstrap, Devise, Stripe, etc and concentrate on building the
+product you want to build!
+
+# Demo
+A brand new Rails 4 project with *just* JohnHenry is live at:
+[http://www.johnhenryrails.com](http://www.johnhenryrails.com)
+This is exactly what you will end up with after installing.
+
+# Installation screencast
+[![Screenshot](https://raw.github.com/derwiki/johnhenry/master/youtube-johnhenry-installation.jpg)](http://www.youtube.com/watch?v=Tb-4UdGxzqU)
+
+# Installation on Mac OS X
+#### .. and probably Linux
 All commands are run via Terminal, which you can find in your
 Applications folder. If you're already using Terminal, try switching to iTerm
-and see if you like it any better.
+and see if you like it any better. Other version controls may work, but it's
+assumed the user is using `git`.
 
 Note: this assumes that you've already got Ruby 2.0 and a Rails 4.0+ gem
 installed. If you haven't, head over to http://rvm.io and then come back. You
@@ -24,11 +45,12 @@ Rails 4.0.2
    `rails new SampleProject && cd SampleProject`
 
 1. Edit `Gemfile` and just below `rails` add:
-   `gem 'johnhenry', git: 'https://johnhenryrails:A9S26gdLZz@bitbucket.org/johnhenryrails/johnhenry.git'`
+   `gem 'johnhenry'`
 
 1. Run `bundle` to update `Gemfile.lock`
 
-1. Run JohnHenryRails installation script: `bundle exec rake johnhenry:install`
+1. Run JohnHenryRails installation script:
+   `bundle exec rake johnhenry:install`
 
 1. Commit the generated changes:
 
@@ -53,7 +75,7 @@ and load `http://localhost:3000/` in your web browser of choice.
 
 1. Create the Heroku instance:
 ```bash
-heroku create SampleProject
+heroku create sampleproject # Heroku doesn't allow mixed case
 git push heroku master
 heroku run rake db:migrate
 heroku restart
@@ -61,6 +83,9 @@ heroku restart
 
 1. Verify in your web browser: `http://sampleproject.herokuapp.com`
 
+Congratulations! You made something on the internet!
+
+## Extended / Optional Setup
 1. Set up Stripe and Google Analytics:
 ```bash
 heroku config:set \
@@ -98,5 +123,9 @@ heroku addons:open scheduler
 In your Registrar's host record configuration, you must add
 `sampleproject.herokuapp.com.` as a CNAME for your domain.
 
+# Contributing
+Bug fixes are welcome as pull requests against master. If you have bigger ideas,
 
-Congratulations! Please email feedback to `derewecki@gmail.com`.
+# License
+MIT License
+please get in contact with me at `derewecki@gmail.com`.
