@@ -10,8 +10,13 @@ Gem::Specification.new do |s|
   s.authors     = ["Adam Derewecki"]
   s.email       = ["derewecki@gmail.com"]
   s.homepage    = "http://johnhenryrails.herokuapp.com"
-  s.summary     = "Starter Rails 4 app with Bootstrap and Stripe"
-  s.description = "Starter Rails 4 app with Bootstrap and Stripe"
+  s.summary     = "Launch a new Bootstrap/Rails 4 app on Heroku in minutes."
+  s.description = "
+    Launch a landing page on Heroku in less than 10 minutes with JohnHenry. This
+    gem sets up bootstrap and provides Bootstrapped user management pages with
+    Devise. JohnHenry also includes a payment form that works with Stripe and is
+    ready to go immediately.".gsub(/\n/, ' ')
+  s.license = 'MIT License'
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
