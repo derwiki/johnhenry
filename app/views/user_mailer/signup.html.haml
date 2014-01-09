@@ -1,0 +1,44 @@
+- unless @name.blank?
+  Hi #{ @name },
+
+%p
+  Thanks for trying the
+  %a{ href: 'http://www.johnhenryrails.com' } JohnHenry Rails
+  toolkit!
+
+%p
+  This is the default user signup email that users will receive after
+  registering for an account. It's a great place for an onboarding email where
+  you introduce the new user to:
+
+%ul
+  %li how they can access their profile
+  %li= link_to 'A password reset link', new_password_path(@user)
+  %li other helpful information.
+
+%p
+  We've got a few reminders for you too, site admin:
+
+%ul
+  %li
+    provision the SendGrid starter package to Heroku with:
+    %br
+    %code `heroku addons:add sendgrid:starter`
+    %br
+    %br
+  %li
+    set an environment variable of one or more recipients to be BCC'ed on every
+    email:
+    %br
+    %code `heroku config:set BCC_EMAILS='user@example.com[,user2@examples.com]'`
+    %br
+    %br
+  %li
+    on your development server, you can access the
+    %a{ href: 'http://localhost:3000/email_preview' } Email Preview
+    gem, which helps you build your emails quickly before you even send a test
+    message.
+
+%p Finally, end with a thank you for trying your product.
+
+%p <3
