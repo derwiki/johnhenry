@@ -11,6 +11,8 @@ namespace :johnhenry do
     install_javascript
     install_stylesheets
     install_stripe
+    install_sendgrid
+    install_email_preview
 
     success_message
   end
@@ -44,69 +46,99 @@ namespace :johnhenry do
     end
   end
 
+  def create_file(blob_array, contents)
+    target = File.join(Rails.root, *blob_array)
+    Rails.logger.info "Creating #{ target }..."
+    File.open(target, 'w') { |f| f.write(contents) }
+  end
+
+  def insert_into_file_after(blob_array, line_no, lines)
+    target = File.join(Rails.root, *blob_array)
+    file_contents = File.readlines(target)
+    prepend = file_contents[0..(line_no-1)]
+    append = file_contents[line_no..-1]
+    contents = (prepend + lines + append)
+    Rails.logger.info "Inserting into #{ target } at line #{ line_no }..."
+    File.open(target, 'w') { |f| f.write contents.join }
+  end
+
   def update_gemfile
     source = File.join(johnhenry_root, *%w(lib Gemfile))
     target = File.join(Rails.root, *%w(Gemfile))
 
-    gemfile_lines_to_insert = File.readlines(source)
+    Rails.logger.info "Removing sqlite3 and turbolinks from Gemfile..."
     gemfile_lines = File.readlines(target).reject do |line|
       line =~ /(sqlite3|turbolinks)/
     end
-    gemfile = gemfile_lines[0..5] + gemfile_lines_to_insert + gemfile_lines[5..-1]
-    Rails.logger.info "Inserting gems into Gemfile and removing turbolinks..."
-    File.open(target, 'w') { |f| f.write gemfile.join("") }
+    File.open(target, 'w') { |f| f.write(gemfile_lines.join) }
+
+    insert_into_file_after(%w(Gemfile), 5, File.readlines(source))
   end
 
   def install_javascript
-    source = File.join(Rails.root, *%w(app assets javascripts application.js))
-    application_js = File.readlines(source)
-    File.open(source, 'w') do |f|
-      # replace turbolinks with johnhenry/application
-      app = application_js[0..13] +
-            ["//= require johnhenry/application\n"] +
-            application_js[15..-1]
-      Rails.logger.info "Adding dependencies to application.js..."
-      f.write(app.join(""))
-    end
+    code = ["//= require johnhenry/application\n"]
+    insert_into_file_after(%w(app assets javascripts application.js), 12, code)
   end
 
   def install_stylesheets
-    source = File.join(Rails.root, *%w(app assets stylesheets application.css))
-    application_css = File.readlines(source)
-    File.open(source, 'w') do |f|
-      app = application_css[0..11] +
-            [" *= require johnhenry/application\n"] +
-            application_css[12..-1]
-      Rails.logger.info "Adding dependencies to application.css..."
-      f.write(app.join(""))
-    end
+    code = [" *= require johnhenry/application\n"]
+    insert_into_file_after(%w(app assets stylesheets application.css), 10, code)
   end
 
   def install_stripe
-    target = File.join(Rails.root, *%w(config initializers stripe.rb))
-    File.open(target, 'w') do |f|
-      Rails.logger.info "Creating config/initializers/stripe.rb..."
-      f.write("Stripe.api_key = ENV['STRIPE_SECRET_KEY']\n")
-      f.write("STRIPE_PUBLISHABLE_KEY = ENV['STRIPE_PUBLISHABLE_KEY']\n")
-    end
+    code = <<-EOS
+Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+STRIPE_PUBLISHABLE_KEY = ENV['STRIPE_PUBLISHABLE_KEY']
+EOS
+    create_file(%w(config initializers stripe.rb), code)
   end
 
-  def update_routes
-    source = File.join(Rails.root, *%w(config routes.rb))
-    routes_rb = File.readlines(source)
-    File.open(source, 'w') do |f|
-      f.write(routes_rb[0])
-      f.write(<<-EOS)
-root 'johnhenry/home#welcome'
-devise_for :users, controllers: {
-    registrations: 'johnhenry/registrations',
-      sessions: 'johnhenry/sessions'
+  def install_sendgrid
+    code = <<-EOS
+ActionMailer::Base.smtp_settings = {
+  :address        => 'smtp.sendgrid.net',
+  :port           => '587',
+  :authentication => :plain,
+  :user_name      => ENV['SENDGRID_USERNAME'],
+  :password       => ENV['SENDGRID_PASSWORD'],
+  :domain         => 'heroku.com',
+  :enable_starttls_auto => true
 }
-resources :payments, controller: 'johnhenry/payments'
-      EOS
-      Rails.logger.info "Injecting routes into config/routes.rb..."
-      f.write(routes_rb[1..-1].join(''))
-    end
+EOS
+    target = File.join(Rails.root, *%w(config environment.rb))
+    Rails.logger.info "Creating config/environment.rb..."
+    File.open(target, 'a+') { |f| f.write(code) }
+
+    code = ["  config.action_mailer.default_url_options = { host: 'localhost:3000' }"]
+    insert_into_file_after(%w(config environments development.rb), 26, code)
+
+    code = ["  config.action_mailer.default_url_options = { host: 'www.johnhenryrails.com' }"]
+    insert_into_file_after(%w(config environments production.rb), 39, code)
+  end
+
+  def install_email_preview
+    code = <<-EOS
+if Rails.env.development?
+  EmailPreview.register 'Signup' do
+    user = User.new email: 'johnny.cage@gmail.com'
+    UserMailer.signup(user)
+  end
+end
+EOS
+    create_file(%w(config initializers email_preview.rb), code)
+  end
+
+
+  def update_routes
+    code = <<-EOS
+  root 'johnhenry/home#welcome'
+  devise_for :users, controllers: {
+      registrations: 'johnhenry/registrations',
+        sessions: 'johnhenry/sessions'
+  }
+  resources :payments, controller: 'johnhenry/payments'
+EOS
+    insert_into_file_after(%w(config routes.rb), 1, [code])
   end
 
   def success_message
