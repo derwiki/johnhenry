@@ -1,0 +1,5 @@
+.form-row
+  .col-xs-12.form-group
+    - if local_assigns[:label]
+      %label.control-label= local_assigns[:label]
+    %input.form-control{ local_assigns[:attrs] }
