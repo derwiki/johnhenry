@@ -22,6 +22,13 @@
     margin-bottom: 15px;
   }
 }
-body > .container:nth-child(n+3) {
+
+// add margin to the 4th-plus child
+body > .container:nth-child(n+4) {
+  margin-top: 80px;
+}
+// and the third if it's right after #hero-unit
+// this handles the case of a .alert container before #hero-unit
+body > #hero-unit + .container {
   margin-top: 80px;
 }
