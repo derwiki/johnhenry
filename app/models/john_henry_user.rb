@@ -9,6 +9,11 @@ class JohnHenryUser < ActiveRecord::Base
   private
 
     def send_signup_email
-      JohnHenryMailer.signup(self).deliver
+      if Rails.application.config.respond_to?('send_johnhenry_signup_email') &&
+           Rails.application.config.send_johnhenry_signup_email
+        JohnHenryMailer.signup(self).deliver
+      else
+        Rails.logger.info "Skipped send_signup_email"
+      end
     end
 end
