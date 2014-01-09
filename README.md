@@ -127,7 +127,7 @@ In your Registrar's host record configuration, you must add
 
 # Contributing
 Bug fixes are welcome as pull requests against master. If you have bigger ideas,
+please get in contact with me at `derewecki@gmail.com`.
 
 # License
 MIT License
-please get in contact with me at `derewecki@gmail.com`.
