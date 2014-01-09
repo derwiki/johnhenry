@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
   private
 
     def send_signup_email
-      UserMailer.signup(self).deliver
+      JohnHenryMailer.signup(self).deliver
     end
 end

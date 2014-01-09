@@ -1,4 +1,4 @@
-class UserMailer < ActionMailer::Base
+class JohnHenryMailer < ActionMailer::Base
   default from: 'No Reply <no-reply@example.com>'
   default bcc: ENV['BCC_EMAILS'] if ENV['BCC_EMAILS'].present?
 
