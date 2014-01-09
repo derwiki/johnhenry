@@ -120,8 +120,8 @@ EOS
     code = <<-EOS
 if Rails.env.development?
   EmailPreview.register 'Signup' do
-    user = User.new email: 'johnny.cage@gmail.com'
-    UserMailer.signup(user)
+    user = JohnHenryUser.new email: 'johnny.cage@gmail.com'
+    JohnHenryMailer.signup(user)
   end
 end
 EOS

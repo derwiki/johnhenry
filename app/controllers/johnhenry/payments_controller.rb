@@ -34,9 +34,9 @@ class Johnhenry::PaymentsController < Johnhenry::ApplicationController
       if params[:email].present?
         #TODO DRY with other new user generation
         password = Devise.friendly_token.first(10)
-        user = User.create! email: params[:email],
-                            password: password,
-                            password_confirmation: password
+        user = JohnHenryUser.create! email: params[:email],
+                                     password: password,
+                                     password_confirmation: password
         sign_in(user)
       else
         return redirect_to '/', alert: 'You need an account to do that.'
