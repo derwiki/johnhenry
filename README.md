@@ -14,6 +14,17 @@ step 2 after `rails new MyProject`. Save 1-2 weeks of boilerplate development
 setting up Bootstrap, Devise, Stripe, etc and concentrate on building the
 product you want to build!
 
+# Technologies Included
+The following libraries and technologies are configured by JohnHenry and
+work out of the box:
+- Devise for user authentication / management
+- Stripe (JS, Gem) for handling payments
+- Bootstrap 3
+- HAML
+- SCSS
+- jQuery
+- Heroku-ready
+
 # Screenshots and Demo
 [![Screenshot](https://raw.github.com/derwiki/johnhenry/master/screenshot-johnhenry.jpg)](http://www.johnhenryrails.com)
 
@@ -29,7 +40,8 @@ This is exactly what you will end up with after installing.
 All commands are run via Terminal, which you can find in your
 Applications folder. If you're already using Terminal, try switching to iTerm
 and see if you like it any better. Other version controls may work, but it's
-assumed the user is using `git`.
+assumed the user is using `git`. I build `git` from source using
+[brew](http://brew.sh/).
 
 Note: this assumes that you've already got Ruby 2.0 and a Rails 4.0+ gem
 installed. If you haven't, head over to http://rvm.io and then come back. You
