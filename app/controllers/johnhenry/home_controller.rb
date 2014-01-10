@@ -1,3 +1,5 @@
+require 'github/markup'
+
 class Johnhenry::HomeController < Johnhenry::ApplicationController
   before_filter :set_home_meta_tags
 
@@ -14,6 +16,12 @@ class Johnhenry::HomeController < Johnhenry::ApplicationController
       set_meta title: title, description: description,
                og: { title: title, description: description }
     end
+  end
+
+  def install
+    filename = File.join(File.dirname(File.expand_path(__FILE__)),
+                       '../../../README.md')
+    @readme = GitHub::Markup.render(filename, File.read(filename))
   end
 
   private

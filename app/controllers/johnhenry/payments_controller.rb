@@ -1,5 +1,3 @@
-require 'github/markup'
-
 class Johnhenry::PaymentsController < Johnhenry::ApplicationController
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
   before_filter :must_have_session, only: [:index, :show]
@@ -13,9 +11,6 @@ class Johnhenry::PaymentsController < Johnhenry::ApplicationController
   # GET /payments/1
   # GET /payments/1.json
   def show
-    filename = File.join(File.dirname(File.expand_path(__FILE__)),
-                       '../../../README.md')
-    @readme = GitHub::Markup.render(filename, File.read(filename))
   end
 
   # GET /payments/new

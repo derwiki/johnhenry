@@ -22,6 +22,9 @@
     margin-bottom: 15px;
   }
 }
+#readme img {
+  width: 320px;
+}
 
 // add margin to the 4th-plus child
 body > .container:nth-child(n+4) {

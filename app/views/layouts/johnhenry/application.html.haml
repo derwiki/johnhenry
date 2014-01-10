@@ -19,12 +19,13 @@
         / Collect the nav links, forms, and other content for toggling
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav
+            %li= link_to 'Install', '/install'
             - if !signed_in?
               %li.active
                 = link_to 'Sign Up', new_user_registration_path
               %li
                 = link_to 'Sign In', new_user_session_path
-          %form.navbar-form.navbar-left{role: "search"}
+          %form.hide.navbar-form.navbar-left{role: "search"}
             .form-group
               %input.form-control{placeholder: "Search", type: "text"}/
             %button.btn.btn-default{type: "submit"} Search
