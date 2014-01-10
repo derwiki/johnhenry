@@ -1,8 +1,16 @@
 PATH
   remote: .
   specs:
-    johnhenry (1.0.0)
-      rails (~> 4.0.2)
+    johnhenry (1.0.11)
+      bootstrap-sass (~> 3.0.3.0)
+      devise
+      github-markdown
+      github-markup
+      haml-rails
+      jquery-rails
+      rails (~> 4.0.0)
+      sass-rails (~> 4.0.0)
+      stripe
 
 GEM
   remote: https://rubygems.org/
@@ -33,16 +41,38 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.1)
     atomic (1.1.14)
+    bcrypt-ruby (3.1.2)
+    bootstrap-sass (3.0.3.0)
+      sass (~> 3.2)
     builder (3.1.4)
+    devise (3.2.2)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     erubis (2.7.0)
+    github-markdown (0.6.3)
+    github-markup (1.0.0)
+    haml (4.0.5)
+      tilt
+    haml-rails (0.5.3)
+      actionpack (>= 4.0.1)
+      activesupport (>= 4.0.1)
+      haml (>= 3.1, < 5.0)
+      railties (>= 4.0.1)
     hike (1.2.3)
     i18n (0.6.9)
+    jquery-rails (3.0.4)
+      railties (>= 3.0, < 5.0)
+      thor (>= 0.14, < 2.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.2)
+    orm_adapter (0.5.0)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -61,6 +91,13 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.1.1)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+    sass (3.2.13)
+    sass-rails (4.0.1)
+      railties (>= 4.0.0, < 5.0)
+      sass (>= 3.1.10)
+      sprockets-rails (~> 2.0.0)
     sprockets (2.10.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -71,6 +108,10 @@ GEM
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     sqlite3 (1.3.8)
+    stripe (1.9.9)
+      mime-types (~> 1.25)
+      multi_json (>= 1.0.4, < 2)
+      rest-client (~> 1.4)
     thor (0.18.1)
     thread_safe (0.1.3)
       atomic
@@ -79,6 +120,8 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.38)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
