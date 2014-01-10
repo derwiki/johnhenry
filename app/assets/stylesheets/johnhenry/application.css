@@ -19,3 +19,7 @@ nav.navbar {
 .stretch {
   width: 100%;
 }
+.well.well-section {
+  margin-bottom: 0;
+  border-radius: 0;
+}

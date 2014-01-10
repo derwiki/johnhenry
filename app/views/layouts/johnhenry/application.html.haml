@@ -6,52 +6,69 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   %body
-    %nav.navbar.navbar-default{role: "navigation"}
-      / Brand and toggle get grouped for better mobile display
-      .navbar-header
-        %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
-          %span.sr-only Toggle navigation
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-        %a.navbar-brand{href: '/'} John Henry Rails
-      / Collect the nav links, forms, and other content for toggling
-      #bs-example-navbar-collapse-1.collapse.navbar-collapse
-        %ul.nav.navbar-nav
-          - if !signed_in?
-            %li.active
-              = link_to 'Sign Up', new_user_registration_path
-            %li
-              = link_to 'Sign In', new_user_session_path
-        %form.navbar-form.navbar-left{role: "search"}
-          .form-group
-            %input.form-control{placeholder: "Search", type: "text"}/
-          %button.btn.btn-default{type: "submit"} Search
-        - if signed_in?
-          %ul.nav.navbar-nav.navbar-right
-            %li.dropdown
-              %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-                Account
-                %b.caret
-              %ul.dropdown-menu
-                %li
-                  %a{ href: payments_path } Payments
-                %li.divider
-                %li
-                  = link_to 'Sign Out', destroy_user_session_path, method: :delete
+    #wrap
+      %nav.navbar.navbar-default{role: "navigation"}
+        / Brand and toggle get grouped for better mobile display
+        .navbar-header
+          %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{href: '/'} John Henry Rails
+        / Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            - if !signed_in?
+              %li.active
+                = link_to 'Sign Up', new_user_registration_path
+              %li
+                = link_to 'Sign In', new_user_session_path
+          %form.navbar-form.navbar-left{role: "search"}
+            .form-group
+              %input.form-control{placeholder: "Search", type: "text"}/
+            %button.btn.btn-default{type: "submit"} Search
+          - if signed_in?
+            %ul.nav.navbar-nav.navbar-right
+              %li.dropdown
+                %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                  Account
+                  %b.caret
+                %ul.dropdown-menu
+                  %li= link_to 'Payments', payments_path
+                  %li.divider
+                  %li
+                    = link_to 'Sign Out', destroy_user_session_path, method: :delete
 
-    - if notice.present? || alert.present?
-      .container{ style: 'width: 100%' }
-        .row
-          - if notice.present?
-            .col-md-12.alert.alert-success
-              = notice
-              %a.pull-right.dismiss-flash{ href: '#' } ✕
-          - if alert.present?
-            .col-md-12.alert.alert-warning
-              = alert
-              %a.pull-right.dismiss-flash{ href: '#' } ✕
-    = yield
+      - if notice.present? || alert.present?
+        .container{ style: 'width: 100%' }
+          .row
+            - if notice.present?
+              .col-md-12.alert.alert-success
+                = notice
+                %a.pull-right.dismiss-flash{ href: '#' } ✕
+            - if alert.present?
+              .col-md-12.alert.alert-warning
+                = alert
+                %a.pull-right.dismiss-flash{ href: '#' } ✕
+      = yield
+
+    #footer.well.well-section
+      .container
+        .row.text-center
+          %ul.col-md-4.col-xs-12.list-unstyled
+            %li= link_to 'Home', '/'
+            - if signed_in?
+              %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
+              %li= link_to 'Payments', payments_path
+            - else
+              %li= link_to 'Sign In', new_user_session_path
+              %li= link_to 'Sign Up', new_user_registration_path
+          .col-md-4.col-xs-12
+            &copy; #{ Date.today.year }
+          %ul.col-md-4.col-xs-12.list-unstyled
+            %li= link_to 'Github Home', 'http://github.com/derwiki/johnhenry'
+            %li= link_to 'Github Issues', 'http://github.com/derwiki/johnhenry/issues'
 
     - if Rails.env.production?
       :javascript
