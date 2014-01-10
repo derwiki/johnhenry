@@ -19,8 +19,8 @@ class Johnhenry::HomeController < Johnhenry::ApplicationController
   end
 
   def install
-    filename = File.join(File.dirname(File.expand_path(__FILE__)),
-                       '../../../README.md')
+    johnhenry_root = Gem.loaded_specs['johnhenry'].full_gem_path.freeze
+    filename = File.join(johnhenry_root, 'README.md')
     @readme = GitHub::Markup.render(filename, File.read(filename))
   end
 
