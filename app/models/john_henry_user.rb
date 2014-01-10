@@ -6,6 +6,11 @@ class JohnHenryUser < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   after_save :send_signup_email
 
+  def guess_name_from_email
+    s = email.split('@').first.try(:titleize)
+    s.split(/[.+-]/).first
+  end
+
   private
 
     def send_signup_email
