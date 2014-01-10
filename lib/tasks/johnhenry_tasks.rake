@@ -143,6 +143,11 @@ EOS
         sessions: 'johnhenry/sessions'
   }
   resources :payments, controller: 'johnhenry/payments'
+  resources :home, controller: 'johnhenry/home' do
+    get :welcome
+    get :install
+  end
+  get '/install' => 'johnhenry/home#install'
 EOS
     insert_into_file_after(%w(config routes.rb), 1, [code])
   end
