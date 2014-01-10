@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.licenses    = ['MIT']
   s.post_install_message = "Thanks for installing the JohnHenry gem. To install to the current project, please run `bundle exec rake johnhenry:install`"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 4.0.0"
