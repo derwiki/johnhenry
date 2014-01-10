@@ -64,7 +64,7 @@ Rails 4.0.2
 1. Run `bundle` to update `Gemfile.lock`
 
 1. Run JohnHenryRails installation script:
-   `bundle exec rake johnhenry:install`
+   `bundle exec rake john_henry:install`
 
 1. Commit the generated changes:
 
@@ -136,6 +136,18 @@ heroku addons:open scheduler
 `heroku domains:add www.johnhenryrails.com`
 In your Registrar's host record configuration, you must add
 `sampleproject.herokuapp.com.` as a CNAME for your domain.
+
+1. Set up NewRelic
+```
+heroku addons:add newrelic:stark
+echo "gem 'newrelic_rpm'" > Gemfile
+bundle
+curl https://gist.github.com/rwdaigle/2253296/raw/newrelic.yml > config/newrelic.yml
+git add config/newrelic.yml Gemfile*
+git commit -m "Set up NewRelic"
+heroku config:set NEW_RELIC_APP_NAME="SampleProject"
+git push heroku master
+```
 
 # Contributing
 Bug fixes are welcome as pull requests against master. If you have bigger ideas,
