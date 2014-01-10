@@ -1,4 +1,4 @@
-namespace :johnhenry do
+namespace :john_henry do
   desc 'Install dependencies and references.'
   task :install do
     Rails.logger = Logger.new(STDOUT)
@@ -8,6 +8,7 @@ namespace :johnhenry do
     maybe_remove_old_layout
     update_gemfile
     update_routes
+    install_user_model
     install_javascript
     install_stylesheets
     install_stripe
@@ -73,6 +74,11 @@ namespace :johnhenry do
     File.open(target, 'w') { |f| f.write(gemfile_lines.join) }
 
     insert_into_file_after(%w(Gemfile), 5, File.readlines(source))
+  end
+
+  def install_user_model
+    code = "class User < JohnHenryUser\nend\n"
+    create_file(%w(app models user.rb), code)
   end
 
   def install_javascript
