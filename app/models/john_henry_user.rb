@@ -4,7 +4,7 @@ class JohnHenryUser < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  after_save :send_signup_email
+  after_create :send_signup_email, if: :john_henry_signup_email_enabled?
 
   def guess_name_from_email
     s = email.split('@').first.try(:titleize)
@@ -14,11 +14,11 @@ class JohnHenryUser < ActiveRecord::Base
   private
 
     def send_signup_email
-      if Rails.application.config.respond_to?('send_johnhenry_signup_email') &&
-           Rails.application.config.send_johnhenry_signup_email
-        JohnHenryMailer.signup(self).deliver
-      else
-        Rails.logger.info "Skipped send_signup_email"
-      end
+      JohnHenryMailer.signup(self).deliver
+    end
+
+    def john_henry_signup_email_enabled?
+      Rails.application.config.respond_to?('send_johnhenry_signup_email') &&
+        Rails.application.config.send_johnhenry_signup_email
     end
 end
