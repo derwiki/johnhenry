@@ -6,7 +6,19 @@ class Johnhenry::RegistrationsController < Devise::RegistrationsController
     render 'johnhenry/devise/registrations/new'
   end
 
+  def create
+    super
+
+    # tell the layout it can render a Google AdWords conversion event
+    flash[:gaw_conversion] = :signup
+  end
+
   private
+
+    # redirect with a query param that can be used as a Google Analytics goal
+    def after_sign_in_path_for(user)
+      '/?signup=1'
+    end
 
     def maybe_generate_password
       if params['user']['password'].blank? &&

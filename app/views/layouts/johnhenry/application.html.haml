@@ -52,6 +52,9 @@
               .col-md-12.alert.alert-warning
                 = alert
                 %a.pull-right.dismiss-flash{ href: '#' } ✕
+      - if flash[:gaw_conversion] == :signup
+        - if ENV['GOOGLE_CONVERSION_ID'] && ENV['GOOGLE_CONVERSION_LABEL']
+          .hide= render 'johnhenry/shared/gaw_conversion'
       = yield
 
     #footer.well.well-section
