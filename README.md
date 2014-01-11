@@ -55,49 +55,16 @@ $ rails -v
 Rails 4.0.2
 ```
 
-1. Create a new Rails project:
-   `rails new SampleProject && cd SampleProject`
-
-1. Edit `Gemfile` and just below `rails` add:
-   `gem 'johnhenry'`
-
-1. Run `bundle` to update `Gemfile.lock`
-
-1. Run JohnHenryRails installation script:
-   `bundle exec rake john_henry:install`
-
-1. Commit the generated changes:
-
-   ```bash
-   git add app config Gemfile*
-   git rm app/views/layouts/application.html.erb
-   git commit -m 'Install JohnHenryRails'
-   ```
-
-1. Install database migrations and run them
+1. Download and run the install script:
+## Basic Installation
+This assumes that you have the following commands available to you on your
+command line: `rails`, `bundle`, `git`, `heroku`.
 ```bash
-bundle exec rake john_henry:install:migrations
-bundle exec rake db:migrate
-git add db && git commit -m 'Add initial migrations and schema.rb'
+export projectname="MyWebSiteName"
+curl https://raw.github.com/derwiki/johnhenry/master/install.sh | bash -
 ```
-
-1. Try the server locally:
-```bash
-bundle exec rails server
-```
-and load `http://localhost:3000/` in your web browser of choice.
-
-1. Create the Heroku instance:
-```bash
-heroku create sampleproject # Heroku doesn't allow mixed case
-git push heroku master
-heroku run rake db:migrate
-heroku restart
-```
-
-1. Verify in your web browser: `http://sampleproject.herokuapp.com`
-
-Congratulations! You made something on the internet!
+Congratulations, you've now made something on the internet! Be sure to tell
+your mom.
 
 ## Extended / Optional Setup
 1. Set up Google Analytics. You can sign up at:
