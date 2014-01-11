@@ -3,6 +3,7 @@
     .col-xs-12.form-group.required
       %label.control-label Email Address
       %input.form-control{ name: 'user[email]', size: '4', type: 'text', type: :email, placeholder: 'user@example.com', autofocus: !!local_assigns[:autofocus] && !signed_in? }/
+      %div{ style: 'font-size: 13px;' } We'll never share your email address.
 
   - if local_assigns[:generate_password]
     %input{ type: 'hidden', name: 'user[password]' }
