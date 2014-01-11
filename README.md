@@ -108,6 +108,10 @@ heroku config:set \
 GOOGLE_ANALYTICS_DOMAIN=sampleproject.herokuapp.com \
 GOOGLE_ANALYTICS_UA=UA-56346779-1
 ```
+If you want to track signups as a goal in Analytics (a good baseline), set up
+a goal where the goal URL is `/signup=1`, because after going through a new
+user flow will drop you at that URL.
+
 1. Google Webmaster Tools
 After setting up Google Analytics, it's easy to link to Webmaster tools:
 `https://www.google.com/webmasters/tools/home?hl=en`
