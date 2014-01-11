@@ -162,6 +162,24 @@ heroku config:set NEW_RELIC_APP_NAME="SampleProject"
 git push heroku master
 ```
 
+1. Set up Google Adwords tracking:
+AdWord's support topic: `https://support.google.com/adwords/answer/1722054?hl=en`
+[![Screenshot](https://raw.github.com/derwiki/johnhenry/master/gaw-setup-conversion-tracking.jpg)](https://support.google.com/adwords/answer/1722054?hl=en)
+At the end of the flow, you'll get a code snippet:
+![Screenshot](https://raw.github.com/derwiki/johnhenry/master/gaw-conversion-tracking.jpg)
+The `google_conversion_id` and `google_conversion_label` are what we care about.
+We're going to use those values to set environment variables that let our app
+know what identifiers to send to AdWords:
+
+```bash
+heroku config:set GOOGLE_CONVERSION_ID=1234 GOOGLE_CONVERSION_LABEL='abc'
+```
+
+To verify that tracking is working properly, go through your sign up flow and
+when you are dumped back on the homepage, view the page's source code. You
+should see a `<!-- Google Code for signup Conversion Page -->` HTML comment
+followed by the conversion snippet.
+
 # Contributing
 Bug fixes are welcome as pull requests against master. If you have bigger ideas,
 please get in contact with me at `derewecki@gmail.com`.
