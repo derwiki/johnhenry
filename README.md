@@ -100,19 +100,32 @@ heroku restart
 Congratulations! You made something on the internet!
 
 ## Extended / Optional Setup
-1. Set up Stripe and Google Analytics:
+1. Set up Google Analytics. You can sign up at:
+`https://www.google.com/analytics/web/#management/Settings`
+
 ```bash
 heroku config:set \
 GOOGLE_ANALYTICS_DOMAIN=sampleproject.herokuapp.com \
-GOOGLE_ANALYTICS_UA=UA-56346779-1 \
-STRIPE_PUBLISHABLE_KEY=pk_zv4FnnuZ28LFHccVSajbQQaTxnaZl
+GOOGLE_ANALYTICS_UA=UA-56346779-1
+```
+1. Google Webmaster Tools
+After setting up Google Analytics, it's easy to link to Webmaster tools:
+`https://www.google.com/webmasters/tools/home?hl=en`
+
+1. Set up Stripe keys
+```bash
+heroku config:set \
+STRIPE_PUBLISHABLE_KEY=pk_zv4FnnuZ28LFHccVSajbQQaTxnaZl \
 STRIPE_SECRET_KEY=lbVrAG8WhPb2cHG9ryBBi1psT4ZREpm8
 ```
 
 1. Add the free tier of SendGrid to enable user account emails:
 ```bash
 heroku addons:add sendgrid:starter
+heroku config:add BCC_EMAILS=you@example.com
 ```
+Setting `BCC_EMAILS` will BCC the provided email with any email sent though
+`JohnHenryMailer`.
 
 1. Add pgbackups and take your first database backup:
 ```bash
