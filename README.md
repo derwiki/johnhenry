@@ -33,7 +33,10 @@ A brand new Rails 4 project with *just* JohnHenry is live at:
 This is exactly what you will end up with after installing.
 
 # Installation screencast
-[![Screenshot](https://raw.github.com/derwiki/johnhenry/master/youtube-johnhenry-installation.jpg)](http://www.youtube.com/watch?v=Tb-4UdGxzqU)
+Using the install script makes the process very easy. If you're still not
+convinced, watch this video of launching a brand new JohnHenry installation
+in under three minutes:
+[![Screenshot](https://raw.github.com/derwiki/johnhenry/master/youtube-johnhenry-installation.jpg)](http://www.youtube.com/watch?v=CkjvOgzmC1M)
 
 # Installation on Mac OS X
 #### .. and probably Linux
