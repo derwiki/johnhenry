@@ -1,7 +1,7 @@
 namespace :john_henry do
   desc 'Install dependencies and references.'
   task :install do
-    Rails.logger = Logger.new(STDOUT)
+    Rails.logger = Logger.new(STDOUT) if Rails.env.development?
 
     quit_if_already_installed
     install_layout
