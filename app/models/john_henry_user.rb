@@ -8,7 +8,7 @@ class JohnHenryUser < ActiveRecord::Base
 
   def guess_name_from_email
     s = email.split('@').first.try(:titleize)
-    s.split(/[.+-]/).first
+    s.split(/[.+-]/).first.try(:gsub, /[0-9]*/, '')
   end
 
   private
