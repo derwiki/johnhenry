@@ -82,8 +82,12 @@ namespace :john_henry do
   end
 
   def install_javascript
+    glob = %w(app assets javascripts application.js)
     code = ["//= require johnhenry/application\n"]
-    insert_into_file_after(%w(app assets javascripts application.js), 12, code)
+    insert_into_file_after(glob, 12, code)
+    source = File.join(Rails.root, *glob)
+    lines = File.readlines(source).reject { |line| line =~ /turbolinks/ }
+    File.open(source, 'w') { |f| f.write(lines.join) }
   end
 
   def install_stylesheets
