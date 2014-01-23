@@ -9,8 +9,17 @@ fi
 #TODO: quit if no: rails, git, bundle, heroku
 
 lowercaseprojectname=`echo $projectname | awk '{print tolower($0)}'`
-rails new $projectname
+rails new $projectname -T --skip-bundle
 cd $projectname
+
+cat <<EOF >>Gemfile
+group :development do
+  gem 'rspec-rails'
+end
+EOF
+
+bundle install
+rails g rspec:install
 git init
 heroku create $lowercaseprojectname
 git add .
