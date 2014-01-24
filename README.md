@@ -58,8 +58,8 @@ $ rails -v
 Rails 4.0.2
 ```
 
-1. Download and run the install script:
 ## Basic Installation
+1. Download and run the install script:
 This assumes that you have the following commands available to you on your
 command line: `rails`, `bundle`, `git`, `heroku`.
 ```bash
