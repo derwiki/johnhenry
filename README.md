@@ -1,3 +1,5 @@
+![](https://codeclimate.com/github/derwiki/johnhenry.png)
+
 # Introduction
 The JohnHenry Rails toolkit is meant to take care of all the menial tasks of
 launching a Rails application, that are largely the same from application to
