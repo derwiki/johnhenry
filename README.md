@@ -1,6 +1,4 @@
-![](https://codeclimate.com/github/derwiki/johnhenry.png)
-
-# Introduction
+# Introduction ![](https://travis-ci.org/derwiki/johnhenry.png) &nbsp; ![](https://codeclimate.com/github/derwiki/johnhenry.png)
 The JohnHenry Rails toolkit is meant to take care of all the menial tasks of
 launching a Rails application, that are largely the same from application to
 application. Using JohnHenry, you'll have the sample project live on a Heroku
