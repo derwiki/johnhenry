@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    johnhenry (1.0.20)
+    johnhenry (1.0.21)
       bootstrap-sass (~> 3.0.3.0)
       devise
       github-markdown
