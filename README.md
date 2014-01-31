@@ -63,7 +63,9 @@ Rails 4.0.2
 This assumes that you have the following commands available to you on your
 command line: `rails`, `bundle`, `git`, `heroku`.
 ```bash
+
 export projectname="MyWebSiteName"
+
 curl https://raw.github.com/derwiki/johnhenry/master/install.sh | bash -
 ```
 Congratulations, you've now made something on the internet! Be sure to tell
