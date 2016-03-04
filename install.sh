@@ -9,7 +9,7 @@ fi
 #TODO: quit if no: rails, git, bundle, heroku
 
 lowercaseprojectname=`echo $projectname | awk '{print tolower($0)}'`
-rails new $projectname
+rails new $projectname -T --skip-bundle
 cd $projectname
 git init
 heroku create $lowercaseprojectname
@@ -19,7 +19,8 @@ echo "gem 'johnhenry'" >> Gemfile
 bundle
 bundle exec rake john_henry:install
 bundle
-git add app config Gemfile*
+rails g rspec:install
+git add app config Gemfile* spec
 git rm app/views/layouts/application.html.erb
 git commit -m 'Install JohnHenryRails'
 bundle exec rake john_henry:install:migrations
